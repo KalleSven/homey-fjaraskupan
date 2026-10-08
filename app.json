@@ -528,9 +528,9 @@
         "ble"
       ],
       "images": {
-        "small": "/drivers/hood/assets/images/small.png",
-        "large": "/drivers/hood/assets/images/large.png",
-        "xlarge": "/drivers/hood/assets/images/xlarge.png"
+        "small": "/drivers/hood/assets/images/small.jpg",
+        "large": "/drivers/hood/assets/images/large.jpg",
+        "xlarge": "/drivers/hood/assets/images/xlarge.jpg"
       },
       "pair": [
         {
