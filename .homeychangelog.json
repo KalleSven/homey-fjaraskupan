@@ -14,5 +14,9 @@
   "1.2.0": {
     "en": "Clearer texts and translations, ready for the Homey App Store.",
     "sv": "Tydligare texter och översättningar, redo för Homey App Store."
+  },
+  "1.2.1": {
+    "en": "The app icon is now visible in the Homey App Store.",
+    "sv": "Appikonen syns nu i Homey App Store."
   }
 }

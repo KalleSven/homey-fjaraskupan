@@ -38,6 +38,8 @@ Control your **Fjäråskupan** cooker hood and lighting wirelessly via Bluetooth
 ---
 
 ### 📜 Versionshistorik (Changelog)
+- **v1.2.1**
+  - Vit appikon så att den syns mot appens mörka färg i Homey App Store.
 - **v1.2.0**
   - Tydligare texter och översättningar inför publicering i Homey App Store.
 - **v1.1.1 (Beta)**

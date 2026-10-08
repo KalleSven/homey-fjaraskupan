@@ -1,6 +1,6 @@
 {
   "name": "net.lindbom.fjaraskupan",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "app.js",
   "scripts": {
     "lint": "eslint app.js lib/ drivers/ test/",

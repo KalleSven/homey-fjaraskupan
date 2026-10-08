@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960" fill="none" stroke="#000" stroke-width="40" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 960" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round" stroke-linejoin="round">
   <circle cx="480" cy="480" r="440"/>
   <path d="M600 270H400v420M400 470h170"/>
 </svg>
