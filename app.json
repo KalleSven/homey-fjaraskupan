@@ -33,6 +33,10 @@
     "email": "johan@lindbom.net"
   },
   "support": "mailto:johan@lindbom.net",
+  "source": "https://github.com/KalleSven/homey-fjaraskupan",
+  "bugs": {
+    "url": "https://github.com/KalleSven/homey-fjaraskupan/issues"
+  },
   "homeyCommunityTopicId": 158902,
   "contributors": {
     "developers": [
