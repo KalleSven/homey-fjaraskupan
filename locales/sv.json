@@ -6,7 +6,9 @@
     "device_not_found": "Köksfläkten hittades inte. Kontrollera att den har ström och är inom Bluetooth-räckvidd.",
     "state_unknown": "Kunde inte läsa belysningens läge från köksfläkten. Försök igen.",
     "invalid_fan_speed": "Ogiltig fläkthastighet.",
-    "invalid_dim_level": "Ogiltig ljusstyrka."
+    "invalid_dim_level": "Ogiltig ljusstyrka.",
+    "command_failed": "Kunde inte nå köksfläkten. Kontrollera att den har ström och försök igen.",
+    "invalid_after_cooking": "Ogiltigt läge för efterkörning."
   },
   "pair": {
     "default_name": "Fjäråskupan köksfläkt"

@@ -177,7 +177,9 @@ class FjaraskupanDriver extends Driver {
 
       timer = this.homey.setTimeout(() => {
         this.removeListener('advertisement', onAdvertisement);
-        reject(new Error(this.homey.__('error.device_not_found')));
+        const err = new Error(this.homey.__('error.device_not_found'));
+        err.localized = true;
+        reject(err);
       }, DISCOVER_TIMEOUT + 2000);
 
       this.on('advertisement', onAdvertisement);

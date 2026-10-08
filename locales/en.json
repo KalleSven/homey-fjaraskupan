@@ -6,7 +6,9 @@
     "device_not_found": "Cooker hood not found. Check that it has power and is within Bluetooth range.",
     "state_unknown": "Could not read the light state from the cooker hood. Try again.",
     "invalid_fan_speed": "Invalid fan speed.",
-    "invalid_dim_level": "Invalid light level."
+    "invalid_dim_level": "Invalid light level.",
+    "command_failed": "Could not reach the cooker hood. Check that it has power and try again.",
+    "invalid_after_cooking": "Invalid after cooking mode."
   },
   "pair": {
     "default_name": "Fjäråskupan cooker hood"

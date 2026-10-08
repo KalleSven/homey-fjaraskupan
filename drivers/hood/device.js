@@ -7,6 +7,7 @@ const {
   TX_CHARACTERISTIC_UUID,
   COMMANDS,
   FAN_SPEEDS,
+  AFTER_COOKING_MODES,
   buildPayload,
   fanSpeedCommand,
   dimCommand,
@@ -184,7 +185,7 @@ class FjaraskupanDevice extends Device {
 
   async setFanSpeed(speed) {
     if (!Number.isInteger(Number(speed)) || speed < 0 || speed > FAN_SPEEDS) {
-      throw new RangeError(this.homey.__('error.invalid_fan_speed'));
+      throw this._error('error.invalid_fan_speed', RangeError);
     }
     const command = fanSpeedCommand(Number(speed));
     await this._runCommand(async (peripheral) => this._write(peripheral, command));
@@ -207,7 +208,7 @@ class FjaraskupanDevice extends Device {
    */
   async setDimLevel(level) {
     if (!Number.isInteger(level) || level < 0 || level > 100) {
-      throw new RangeError(this.homey.__('error.invalid_dim_level'));
+      throw this._error('error.invalid_dim_level', RangeError);
     }
 
     await this._runCommand(async (peripheral) => {
@@ -235,6 +236,9 @@ class FjaraskupanDevice extends Device {
   }
 
   async setAfterCooking(mode) {
+    if (!AFTER_COOKING_MODES.includes(mode)) {
+      throw this._error('error.invalid_after_cooking', RangeError);
+    }
     const command = afterCookingCommand(mode);
     await this._runCommand(async (peripheral) => this._write(peripheral, command));
     this._setCapability('after_cooking', mode);
@@ -283,7 +287,8 @@ class FjaraskupanDevice extends Device {
         }
       }
 
-      throw lastError;
+      // Errors from Homey's BLE stack are not translated, so show our own message
+      throw lastError && lastError.localized ? lastError : this._error('error.command_failed');
     };
 
     const result = this._commandQueue.then(task, task);
@@ -308,7 +313,7 @@ class FjaraskupanDevice extends Device {
       await this._withTimeout(
         peripheral.write(SERVICE_UUID, RX_CHARACTERISTIC_UUID, buildPayload(command)),
         WRITE_TIMEOUT,
-        this.homey.__('error.command_timeout'),
+        this._error('error.command_timeout'),
       );
     } catch (err) {
       // Unknown whether the command reached the hood
@@ -398,13 +403,22 @@ class FjaraskupanDevice extends Device {
       return this._advertisedState.lightOn;
     }
 
-    throw new Error(this.homey.__('error.state_unknown'));
+    throw this._error('error.state_unknown');
   }
 
-  async _withTimeout(promise, ms, errorMessage) {
+  /**
+   * Create an error with a translated message that is safe to show to the user.
+   */
+  _error(key, ErrorType = Error) {
+    const err = new ErrorType(this.homey.__(key));
+    err.localized = true;
+    return err;
+  }
+
+  async _withTimeout(promise, ms, error) {
     let timer;
     const timeout = new Promise((_, reject) => {
-      timer = this.homey.setTimeout(() => reject(new Error(errorMessage)), ms);
+      timer = this.homey.setTimeout(() => reject(error instanceof Error ? error : new Error(error)), ms);
     });
 
     try {
@@ -431,7 +445,7 @@ class FjaraskupanDevice extends Device {
 
     let peripheral;
     try {
-      peripheral = await this._withTimeout(connecting, CONNECT_TIMEOUT, this.homey.__('error.connect_timeout'));
+      peripheral = await this._withTimeout(connecting, CONNECT_TIMEOUT, this._error('error.connect_timeout'));
     } catch (err) {
       // Homey rejects new connections while this attempt is pending, so wait for
       // it to settle before retrying. A connection that completes late would
