@@ -1,0 +1,3 @@
+Fjäråskupan cooker hoods with Bluetooth control can now be part of your smart home. Turn the fan on or off and choose between six speeds, switch and dim the light, and use periodic venting and after cooking. Changes made with the buttons on the hood show up in Homey automatically, and you are notified when the grease or carbon filter needs attention.
+
+Your Homey Pro needs to be within Bluetooth range of the cooker hood. Add the hood from the device list, and then use it in your Flows, for example to start the fan when the cooktop is turned on or to turn off the light when you leave the kitchen.

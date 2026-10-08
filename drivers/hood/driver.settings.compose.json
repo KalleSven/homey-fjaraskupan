@@ -1,0 +1,21 @@
+[
+  {
+    "id": "venting_interval",
+    "type": "number",
+    "label": {
+      "en": "Venting interval",
+      "sv": "Ventilationsintervall"
+    },
+    "hint": {
+      "en": "Minutes between each periodic venting run.",
+      "sv": "Antal minuter mellan varje ventilationsomgång."
+    },
+    "value": 30,
+    "min": 1,
+    "max": 59,
+    "units": {
+      "en": "min",
+      "sv": "min"
+    }
+  }
+]

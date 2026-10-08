@@ -1,0 +1,47 @@
+{
+  "id": "net.lindbom.fjaraskupan",
+  "version": "1.2.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "license": "GPL-3.0-or-later",
+  "brandColor": "#1c2833",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Fjäråskupan",
+    "sv": "Fjäråskupan"
+  },
+  "description": {
+    "en": "Fresh kitchen air, fully automated.",
+    "sv": "Frisk luft i köket – helt automatiskt."
+  },
+  "category": [
+    "appliances"
+  ],
+  "permissions": [
+    "homey:wireless:ble"
+  ],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Johan Lindbom",
+    "email": "johan@lindbom.net"
+  },
+  "support": "mailto:johan@lindbom.net",
+  "homeyCommunityTopicId": 158902,
+  "contributors": {
+    "developers": [
+      {
+        "name": "Johan Lindbom",
+        "email": "johan@lindbom.net"
+      },
+      {
+        "name": "elupus (fjaraskupan protocol library)"
+      }
+    ]
+  }
+}

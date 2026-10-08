@@ -1,0 +1,14 @@
+{
+  "error": {
+    "device_out_of_range": "The cooker hood is out of Bluetooth range or has no power.",
+    "command_timeout": "The command timed out. The cooker hood might be out of range.",
+    "connect_timeout": "Could not connect to the cooker hood. It might be out of range.",
+    "device_not_found": "Cooker hood not found. Check that it has power and is within Bluetooth range.",
+    "state_unknown": "Could not read the light state from the cooker hood. Try again.",
+    "invalid_fan_speed": "Invalid fan speed.",
+    "invalid_dim_level": "Invalid light level."
+  },
+  "pair": {
+    "default_name": "Fjäråskupan cooker hood"
+  }
+}

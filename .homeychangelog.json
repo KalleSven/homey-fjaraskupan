@@ -1,0 +1,18 @@
+{
+  "1.0.0": {
+    "en": "First release with light on/off, fan speed and Flow cards.",
+    "sv": "Första versionen med tänd/släck belysning, fläkthastighet och Flow-kort."
+  },
+  "1.1.0": {
+    "en": "Fan is now the main device control with separate light and dimming. Six fan speeds, periodic venting, after cooking, filter alarms and new Flow cards. More reliable Bluetooth connection.",
+    "sv": "Fläkten är nu enhetens huvudreglage, med separat belysning och dimring. Sex fläkthastigheter, periodisk ventilation, efterkörning, filterlarm och nya Flow-kort. Stabilare Bluetooth-anslutning."
+  },
+  "1.1.1": {
+    "en": "Buttons to reset the grease and carbon filter alarms under the device's maintenance settings. More reliable reconnection after a connection timeout.",
+    "sv": "Knappar för att återställa fett- och kolfilterlarm under enhetens underhållsinställningar. Stabilare återanslutning efter en avbruten anslutning."
+  },
+  "1.2.0": {
+    "en": "Clearer texts and translations, ready for the Homey App Store.",
+    "sv": "Tydligare texter och översättningar, redo för Homey App Store."
+  }
+}

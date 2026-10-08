@@ -1,0 +1,288 @@
+{
+  "triggers": [
+    {
+      "id": "light_turned_on",
+      "title": {
+        "en": "Light turned on",
+        "sv": "Belysningen tändes"
+      }
+    },
+    {
+      "id": "light_turned_off",
+      "title": {
+        "en": "Light turned off",
+        "sv": "Belysningen släcktes"
+      }
+    },
+    {
+      "id": "fan_speed_changed",
+      "title": {
+        "en": "Fan speed changed",
+        "sv": "Fläkthastigheten ändrades"
+      },
+      "tokens": [
+        {
+          "name": "speed",
+          "type": "number",
+          "title": {
+            "en": "Speed",
+            "sv": "Hastighet"
+          },
+          "example": 2
+        }
+      ]
+    },
+    {
+      "id": "grease_filter_full",
+      "title": {
+        "en": "Grease filter is full",
+        "sv": "Fettfiltret är fullt"
+      }
+    },
+    {
+      "id": "carbon_filter_full",
+      "title": {
+        "en": "Carbon filter is full",
+        "sv": "Kolfiltret är fullt"
+      }
+    }
+  ],
+  "conditions": [
+    {
+      "id": "light_is_on",
+      "title": {
+        "en": "Light is !{{on|off}}",
+        "sv": "Belysningen är !{{tänd|släckt}}"
+      }
+    },
+    {
+      "id": "fan_is_running",
+      "title": {
+        "en": "Fan !{{is|is not}} running",
+        "sv": "Fläkten !{{går|går inte}}"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "id": "light_on",
+      "title": {
+        "en": "Turn on light",
+        "sv": "Tänd belysning"
+      },
+      "hint": {
+        "en": "Turns on the cooker hood light.",
+        "sv": "Tänder belysningen på köksfläkten."
+      }
+    },
+    {
+      "id": "light_off",
+      "title": {
+        "en": "Turn off light",
+        "sv": "Släck belysning"
+      },
+      "hint": {
+        "en": "Turns off the cooker hood light.",
+        "sv": "Släcker belysningen på köksfläkten."
+      }
+    },
+    {
+      "id": "set_light_dim",
+      "title": {
+        "en": "Set light level",
+        "sv": "Ställ in ljusstyrka"
+      },
+      "hint": {
+        "en": "Sets the light level. 0% turns the light off.",
+        "sv": "Ställer in ljusstyrkan. 0 % släcker belysningen."
+      },
+      "titleFormatted": {
+        "en": "Set light level to [[level]]",
+        "sv": "Ställ in ljusstyrka till [[level]]"
+      },
+      "args": [
+        {
+          "name": "level",
+          "type": "range",
+          "min": 0,
+          "max": 1,
+          "step": 0.01,
+          "label": "%",
+          "labelMultiplier": 100,
+          "labelDecimals": 0
+        }
+      ]
+    },
+    {
+      "id": "set_fan_speed",
+      "title": {
+        "en": "Set fan speed",
+        "sv": "Ställ in fläkthastighet"
+      },
+      "hint": {
+        "en": "Sets the cooker hood fan speed.",
+        "sv": "Ställer in fläkthastigheten på köksfläkten."
+      },
+      "titleFormatted": {
+        "en": "Set fan speed to [[speed]]",
+        "sv": "Ställ in fläkthastighet till [[speed]]"
+      },
+      "args": [
+        {
+          "name": "speed",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Off",
+                "sv": "Av"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Speed 1",
+                "sv": "Hastighet 1"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Speed 2",
+                "sv": "Hastighet 2"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "Speed 3",
+                "sv": "Hastighet 3"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "Speed 4",
+                "sv": "Hastighet 4"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "Speed 5",
+                "sv": "Hastighet 5"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Speed 6",
+                "sv": "Hastighet 6"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "turn_off_all",
+      "title": {
+        "en": "Turn off fan and light",
+        "sv": "Stäng av fläkt och belysning"
+      },
+      "hint": {
+        "en": "Turns off both the fan and the light.",
+        "sv": "Stänger av både fläkten och belysningen."
+      }
+    },
+    {
+      "id": "set_after_cooking",
+      "title": {
+        "en": "Set after cooking",
+        "sv": "Ställ in efterkörning"
+      },
+      "hint": {
+        "en": "After cooking keeps the fan running for a while after you finish cooking.",
+        "sv": "Efterkörning låter fläkten gå en stund efter att du lagat klart."
+      },
+      "titleFormatted": {
+        "en": "Set after cooking to [[mode]]",
+        "sv": "Ställ in efterkörning till [[mode]]"
+      },
+      "args": [
+        {
+          "name": "mode",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "off",
+              "label": {
+                "en": "Off",
+                "sv": "Av"
+              }
+            },
+            {
+              "id": "auto",
+              "label": {
+                "en": "Automatic",
+                "sv": "Automatisk"
+              }
+            },
+            {
+              "id": "manual",
+              "label": {
+                "en": "Manual",
+                "sv": "Manuell"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "venting_on",
+      "title": {
+        "en": "Turn on periodic venting",
+        "sv": "Slå på periodisk ventilation"
+      },
+      "hint": {
+        "en": "Uses the interval from the device settings.",
+        "sv": "Använder intervallet från enhetens inställningar."
+      }
+    },
+    {
+      "id": "venting_off",
+      "title": {
+        "en": "Turn off periodic venting",
+        "sv": "Stäng av periodisk ventilation"
+      },
+      "hint": {
+        "en": "Turns off periodic venting.",
+        "sv": "Stänger av periodisk ventilation."
+      }
+    },
+    {
+      "id": "reset_grease_filter",
+      "title": {
+        "en": "Reset grease filter",
+        "sv": "Återställ fettfilter"
+      },
+      "hint": {
+        "en": "Resets the grease filter alarm after cleaning.",
+        "sv": "Återställer fettfilterlarmet efter rengöring."
+      }
+    },
+    {
+      "id": "reset_carbon_filter",
+      "title": {
+        "en": "Reset carbon filter",
+        "sv": "Återställ kolfilter"
+      },
+      "hint": {
+        "en": "Resets the carbon filter alarm after replacing the filter.",
+        "sv": "Återställer kolfilterlarmet efter filterbyte."
+      }
+    }
+  ]
+}

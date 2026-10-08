@@ -1,0 +1,8 @@
+test/
+.eslintrc.json
+tsconfig.json
+workspace.code-workspace
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+README.md
+.DS_Store

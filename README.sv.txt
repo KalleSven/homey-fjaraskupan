@@ -1,0 +1,3 @@
+Fjäråskupans köksfläktar med Bluetooth-styrning kan nu bli en del av ditt smarta hem. Slå på eller av fläkten och välj mellan sex hastigheter, tänd, släck och dimra belysningen, och använd periodisk ventilation och efterkörning. Ändringar som görs med knapparna på fläkten syns automatiskt i Homey, och du får besked när fett- eller kolfiltret behöver åtgärdas.
+
+Din Homey Pro behöver vara inom Bluetooth-räckvidd från köksfläkten. Lägg till fläkten från enhetslistan och använd den sedan i dina Flows, till exempel för att starta fläkten när spishällen slås på eller släcka belysningen när du lämnar köket.

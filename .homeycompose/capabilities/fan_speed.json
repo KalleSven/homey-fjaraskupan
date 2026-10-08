@@ -1,0 +1,62 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Fan speed",
+    "sv": "Fläkthastighet"
+  },
+  "uiComponent": "picker",
+  "getable": true,
+  "setable": true,
+  "insights": false,
+  "values": [
+    {
+      "id": "0",
+      "title": {
+        "en": "Off",
+        "sv": "Av"
+      }
+    },
+    {
+      "id": "1",
+      "title": {
+        "en": "Speed 1",
+        "sv": "Hastighet 1"
+      }
+    },
+    {
+      "id": "2",
+      "title": {
+        "en": "Speed 2",
+        "sv": "Hastighet 2"
+      }
+    },
+    {
+      "id": "3",
+      "title": {
+        "en": "Speed 3",
+        "sv": "Hastighet 3"
+      }
+    },
+    {
+      "id": "4",
+      "title": {
+        "en": "Speed 4",
+        "sv": "Hastighet 4"
+      }
+    },
+    {
+      "id": "5",
+      "title": {
+        "en": "Speed 5",
+        "sv": "Hastighet 5"
+      }
+    },
+    {
+      "id": "6",
+      "title": {
+        "en": "Speed 6",
+        "sv": "Hastighet 6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,666 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "net.lindbom.fjaraskupan",
+  "version": "1.2.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "license": "GPL-3.0-or-later",
+  "brandColor": "#1c2833",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Fjäråskupan",
+    "sv": "Fjäråskupan"
+  },
+  "description": {
+    "en": "Fresh kitchen air, fully automated.",
+    "sv": "Frisk luft i köket – helt automatiskt."
+  },
+  "category": [
+    "appliances"
+  ],
+  "permissions": [
+    "homey:wireless:ble"
+  ],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Johan Lindbom",
+    "email": "johan@lindbom.net"
+  },
+  "support": "mailto:johan@lindbom.net",
+  "homeyCommunityTopicId": 158902,
+  "contributors": {
+    "developers": [
+      {
+        "name": "Johan Lindbom",
+        "email": "johan@lindbom.net"
+      },
+      {
+        "name": "elupus (fjaraskupan protocol library)"
+      }
+    ]
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "light_turned_on",
+        "title": {
+          "en": "Light turned on",
+          "sv": "Belysningen tändes"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "light_turned_off",
+        "title": {
+          "en": "Light turned off",
+          "sv": "Belysningen släcktes"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "fan_speed_changed",
+        "title": {
+          "en": "Fan speed changed",
+          "sv": "Fläkthastigheten ändrades"
+        },
+        "tokens": [
+          {
+            "name": "speed",
+            "type": "number",
+            "title": {
+              "en": "Speed",
+              "sv": "Hastighet"
+            },
+            "example": 2
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "grease_filter_full",
+        "title": {
+          "en": "Grease filter is full",
+          "sv": "Fettfiltret är fullt"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "carbon_filter_full",
+        "title": {
+          "en": "Carbon filter is full",
+          "sv": "Kolfiltret är fullt"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "light_is_on",
+        "title": {
+          "en": "Light is !{{on|off}}",
+          "sv": "Belysningen är !{{tänd|släckt}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "fan_is_running",
+        "title": {
+          "en": "Fan !{{is|is not}} running",
+          "sv": "Fläkten !{{går|går inte}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "light_on",
+        "title": {
+          "en": "Turn on light",
+          "sv": "Tänd belysning"
+        },
+        "hint": {
+          "en": "Turns on the cooker hood light.",
+          "sv": "Tänder belysningen på köksfläkten."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "light_off",
+        "title": {
+          "en": "Turn off light",
+          "sv": "Släck belysning"
+        },
+        "hint": {
+          "en": "Turns off the cooker hood light.",
+          "sv": "Släcker belysningen på köksfläkten."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "set_light_dim",
+        "title": {
+          "en": "Set light level",
+          "sv": "Ställ in ljusstyrka"
+        },
+        "hint": {
+          "en": "Sets the light level. 0% turns the light off.",
+          "sv": "Ställer in ljusstyrkan. 0 % släcker belysningen."
+        },
+        "titleFormatted": {
+          "en": "Set light level to [[level]]",
+          "sv": "Ställ in ljusstyrka till [[level]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          },
+          {
+            "name": "level",
+            "type": "range",
+            "min": 0,
+            "max": 1,
+            "step": 0.01,
+            "label": "%",
+            "labelMultiplier": 100,
+            "labelDecimals": 0
+          }
+        ]
+      },
+      {
+        "id": "set_fan_speed",
+        "title": {
+          "en": "Set fan speed",
+          "sv": "Ställ in fläkthastighet"
+        },
+        "hint": {
+          "en": "Sets the cooker hood fan speed.",
+          "sv": "Ställer in fläkthastigheten på köksfläkten."
+        },
+        "titleFormatted": {
+          "en": "Set fan speed to [[speed]]",
+          "sv": "Ställ in fläkthastighet till [[speed]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          },
+          {
+            "name": "speed",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Off",
+                  "sv": "Av"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Speed 1",
+                  "sv": "Hastighet 1"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Speed 2",
+                  "sv": "Hastighet 2"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Speed 3",
+                  "sv": "Hastighet 3"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "Speed 4",
+                  "sv": "Hastighet 4"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Speed 5",
+                  "sv": "Hastighet 5"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "Speed 6",
+                  "sv": "Hastighet 6"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "turn_off_all",
+        "title": {
+          "en": "Turn off fan and light",
+          "sv": "Stäng av fläkt och belysning"
+        },
+        "hint": {
+          "en": "Turns off both the fan and the light.",
+          "sv": "Stänger av både fläkten och belysningen."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "set_after_cooking",
+        "title": {
+          "en": "Set after cooking",
+          "sv": "Ställ in efterkörning"
+        },
+        "hint": {
+          "en": "After cooking keeps the fan running for a while after you finish cooking.",
+          "sv": "Efterkörning låter fläkten gå en stund efter att du lagat klart."
+        },
+        "titleFormatted": {
+          "en": "Set after cooking to [[mode]]",
+          "sv": "Ställ in efterkörning till [[mode]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          },
+          {
+            "name": "mode",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "off",
+                "label": {
+                  "en": "Off",
+                  "sv": "Av"
+                }
+              },
+              {
+                "id": "auto",
+                "label": {
+                  "en": "Automatic",
+                  "sv": "Automatisk"
+                }
+              },
+              {
+                "id": "manual",
+                "label": {
+                  "en": "Manual",
+                  "sv": "Manuell"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "venting_on",
+        "title": {
+          "en": "Turn on periodic venting",
+          "sv": "Slå på periodisk ventilation"
+        },
+        "hint": {
+          "en": "Uses the interval from the device settings.",
+          "sv": "Använder intervallet från enhetens inställningar."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "venting_off",
+        "title": {
+          "en": "Turn off periodic venting",
+          "sv": "Stäng av periodisk ventilation"
+        },
+        "hint": {
+          "en": "Turns off periodic venting.",
+          "sv": "Stänger av periodisk ventilation."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "reset_grease_filter",
+        "title": {
+          "en": "Reset grease filter",
+          "sv": "Återställ fettfilter"
+        },
+        "hint": {
+          "en": "Resets the grease filter alarm after cleaning.",
+          "sv": "Återställer fettfilterlarmet efter rengöring."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      },
+      {
+        "id": "reset_carbon_filter",
+        "title": {
+          "en": "Reset carbon filter",
+          "sv": "Återställ kolfilter"
+        },
+        "hint": {
+          "en": "Resets the carbon filter alarm after replacing the filter.",
+          "sv": "Återställer kolfilterlarmet efter filterbyte."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=hood"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Cooker Hood",
+        "sv": "Köksfläkt"
+      },
+      "class": "fan",
+      "capabilities": [
+        "onoff",
+        "fan_speed",
+        "onoff.light",
+        "dim.light",
+        "onoff.venting",
+        "after_cooking",
+        "alarm_generic.grease_filter",
+        "alarm_generic.carbon_filter",
+        "button.reset_grease_filter",
+        "button.reset_carbon_filter"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Fan",
+            "sv": "Fläkt"
+          }
+        },
+        "onoff.light": {
+          "title": {
+            "en": "Light",
+            "sv": "Belysning"
+          }
+        },
+        "dim.light": {
+          "title": {
+            "en": "Light level",
+            "sv": "Ljusstyrka"
+          }
+        },
+        "onoff.venting": {
+          "title": {
+            "en": "Periodic venting",
+            "sv": "Periodisk ventilation"
+          }
+        },
+        "alarm_generic.grease_filter": {
+          "title": {
+            "en": "Grease filter full",
+            "sv": "Fettfilter fullt"
+          }
+        },
+        "alarm_generic.carbon_filter": {
+          "title": {
+            "en": "Carbon filter full",
+            "sv": "Kolfilter fullt"
+          }
+        },
+        "button.reset_grease_filter": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Reset grease filter alarm",
+            "sv": "Återställ fettfilterlarm"
+          }
+        },
+        "button.reset_carbon_filter": {
+          "maintenanceAction": true,
+          "title": {
+            "en": "Reset carbon filter alarm",
+            "sv": "Återställ kolfilterlarm"
+          }
+        }
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "ble"
+      ],
+      "images": {
+        "small": "/drivers/hood/assets/images/small.png",
+        "large": "/drivers/hood/assets/images/large.png",
+        "xlarge": "/drivers/hood/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "hood",
+      "settings": [
+        {
+          "id": "venting_interval",
+          "type": "number",
+          "label": {
+            "en": "Venting interval",
+            "sv": "Ventilationsintervall"
+          },
+          "hint": {
+            "en": "Minutes between each periodic venting run.",
+            "sv": "Antal minuter mellan varje ventilationsomgång."
+          },
+          "value": 30,
+          "min": 1,
+          "max": 59,
+          "units": {
+            "en": "min",
+            "sv": "min"
+          }
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "after_cooking": {
+      "type": "enum",
+      "title": {
+        "en": "After cooking",
+        "sv": "Efterkörning"
+      },
+      "uiComponent": "picker",
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "values": [
+        {
+          "id": "off",
+          "title": {
+            "en": "Off",
+            "sv": "Av"
+          }
+        },
+        {
+          "id": "auto",
+          "title": {
+            "en": "Automatic",
+            "sv": "Automatisk"
+          }
+        },
+        {
+          "id": "manual",
+          "title": {
+            "en": "Manual",
+            "sv": "Manuell"
+          }
+        }
+      ]
+    },
+    "fan_speed": {
+      "type": "enum",
+      "title": {
+        "en": "Fan speed",
+        "sv": "Fläkthastighet"
+      },
+      "uiComponent": "picker",
+      "getable": true,
+      "setable": true,
+      "insights": false,
+      "values": [
+        {
+          "id": "0",
+          "title": {
+            "en": "Off",
+            "sv": "Av"
+          }
+        },
+        {
+          "id": "1",
+          "title": {
+            "en": "Speed 1",
+            "sv": "Hastighet 1"
+          }
+        },
+        {
+          "id": "2",
+          "title": {
+            "en": "Speed 2",
+            "sv": "Hastighet 2"
+          }
+        },
+        {
+          "id": "3",
+          "title": {
+            "en": "Speed 3",
+            "sv": "Hastighet 3"
+          }
+        },
+        {
+          "id": "4",
+          "title": {
+            "en": "Speed 4",
+            "sv": "Hastighet 4"
+          }
+        },
+        {
+          "id": "5",
+          "title": {
+            "en": "Speed 5",
+            "sv": "Hastighet 5"
+          }
+        },
+        {
+          "id": "6",
+          "title": {
+            "en": "Speed 6",
+            "sv": "Hastighet 6"
+          }
+        }
+      ]
+    }
+  }
+}

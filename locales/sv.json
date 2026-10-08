@@ -1,0 +1,14 @@
+{
+  "error": {
+    "device_out_of_range": "Köksfläkten är utom räckvidd för Bluetooth eller saknar ström.",
+    "command_timeout": "Kommandot tog för lång tid. Köksfläkten kan vara utom räckvidd.",
+    "connect_timeout": "Kunde inte ansluta till köksfläkten. Den kan vara utom räckvidd.",
+    "device_not_found": "Köksfläkten hittades inte. Kontrollera att den har ström och är inom Bluetooth-räckvidd.",
+    "state_unknown": "Kunde inte läsa belysningens läge från köksfläkten. Försök igen.",
+    "invalid_fan_speed": "Ogiltig fläkthastighet.",
+    "invalid_dim_level": "Ogiltig ljusstyrka."
+  },
+  "pair": {
+    "default_name": "Fjäråskupan köksfläkt"
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "name": {
+    "en": "Cooker Hood",
+    "sv": "Köksfläkt"
+  },
+  "class": "fan",
+  "capabilities": [
+    "onoff",
+    "fan_speed",
+    "onoff.light",
+    "dim.light",
+    "onoff.venting",
+    "after_cooking",
+    "alarm_generic.grease_filter",
+    "alarm_generic.carbon_filter",
+    "button.reset_grease_filter",
+    "button.reset_carbon_filter"
+  ],
+  "capabilitiesOptions": {
+    "onoff": {
+      "title": {
+        "en": "Fan",
+        "sv": "Fläkt"
+      }
+    },
+    "onoff.light": {
+      "title": {
+        "en": "Light",
+        "sv": "Belysning"
+      }
+    },
+    "dim.light": {
+      "title": {
+        "en": "Light level",
+        "sv": "Ljusstyrka"
+      }
+    },
+    "onoff.venting": {
+      "title": {
+        "en": "Periodic venting",
+        "sv": "Periodisk ventilation"
+      }
+    },
+    "alarm_generic.grease_filter": {
+      "title": {
+        "en": "Grease filter full",
+        "sv": "Fettfilter fullt"
+      }
+    },
+    "alarm_generic.carbon_filter": {
+      "title": {
+        "en": "Carbon filter full",
+        "sv": "Kolfilter fullt"
+      }
+    },
+    "button.reset_grease_filter": {
+      "maintenanceAction": true,
+      "title": {
+        "en": "Reset grease filter alarm",
+        "sv": "Återställ fettfilterlarm"
+      }
+    },
+    "button.reset_carbon_filter": {
+      "maintenanceAction": true,
+      "title": {
+        "en": "Reset carbon filter alarm",
+        "sv": "Återställ kolfilterlarm"
+      }
+    }
+  },
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "ble"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "add_devices"
+      }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ]
+}
